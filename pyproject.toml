@@ -1,0 +1,58 @@
+[project]
+name = "close-recon-assistant"
+version = "0.1.0"
+description = "Offline month-end cash reconciliation for a fictional company. Rules draft the bridge. A person approves the numbers. Nothing is posted."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Tishan Perera" }]
+keywords = ["reconciliation", "month-end-close", "fp-and-a", "finance", "audit"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Financial and Insurance Industry",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Office/Business :: Financial",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["ruff==0.17.5"]
+
+[project.scripts]
+close-recon = "close_recon.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/tishan-perera/close-recon-assistant"
+Issues = "https://github.com/tishan-perera/close-recon-assistant/issues"
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["close_recon"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/close_recon", "/sample-data", "/tests", "/scripts", "/examples", "/README.md", "/LICENSE", "/pyproject.toml"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["close_recon", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["E402"]
+"scripts/**/*.py" = ["E402"]
+"run.py" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
