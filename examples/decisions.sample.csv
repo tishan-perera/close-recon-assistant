@@ -1,0 +1,6 @@
+item_id,decision,reviewer,note
+MATCH-M-12,approve,A. Reviewer (sample),Amount difference accepted for the sample. Not posted.
+DUP-bank-B-11,approve,A. Reviewer (sample),Treat the second draft as a duplicate for the sample.
+JE-R-05,reject,A. Reviewer (sample),Fee needs a supporting statement. Sample rejection only.
+CAT-E-10,approve,A. Reviewer (sample),Leave uncategorized until a person recodes it.
+SIGN-OFF,approve,A. Reviewer (sample),Sample sign-off. Open items remain.
